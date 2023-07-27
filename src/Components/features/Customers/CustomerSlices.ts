@@ -9,6 +9,7 @@ export interface ICustomerService {
 type CustomerAction =
     | { type: "customer/create"; payload: {
         fullName: string,
+
         nationalID: string,
         created_at: Date,
     } }
