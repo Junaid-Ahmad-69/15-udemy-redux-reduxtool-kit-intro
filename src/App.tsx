@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import CreateCustomer from "./Components/features/Customers/CreateCustomer/CreateCustomer";
+import Customer from "./Components/features/Customers/Customer/Customer";
+import AccountOperations from "./Components/features/Accounts/AccountOperation/AccountOperations";
+import BalanceDisplay from "./Components/features/Accounts/BalanceDisplay/BalanceDisplay";
+import {useSelector} from "react-redux";
+import {RootState} from "./redux/store";
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const {fullName} = useSelector( (store: RootState) => store.customer)
+    return (
+        <div>
+            <h1>🏦 The React-Redux Bank ⚛️</h1>
+            {fullName === "" ?
+                <CreateCustomer/> :
+                <>
+                    <Customer/>
+                    <AccountOperations/>
+                    <BalanceDisplay/>
+                </>}
+        </div>
+    );
 }
 
 export default App;
